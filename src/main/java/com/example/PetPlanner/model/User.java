@@ -36,6 +36,13 @@ public class User implements UserDetails {
     private String password;
 
     @Column(nullable = false)
+    private String phoneNumber;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_address_id")
+    private Address address;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 
