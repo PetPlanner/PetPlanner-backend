@@ -1,5 +1,6 @@
 package com.example.PetPlanner.dto;
 
+import com.example.PetPlanner.model.Address;
 import com.example.PetPlanner.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,4 +22,8 @@ public class RegisterRequest {
     private String firstname;
 
     private String lastname;
+
+    private String phoneNumber;
+
+    private Address address;
 }

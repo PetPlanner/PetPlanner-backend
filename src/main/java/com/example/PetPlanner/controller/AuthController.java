@@ -5,6 +5,7 @@ import com.example.PetPlanner.dto.AuthenticationResponse;
 import com.example.PetPlanner.dto.RegisterRequest;
 import com.example.PetPlanner.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody RegisterRequest user){
         authenticationService.register(user);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.OK).body("User successfully created.");
     }
 
     @PostMapping("/login")

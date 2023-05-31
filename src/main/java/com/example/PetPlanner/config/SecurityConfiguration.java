@@ -33,6 +33,8 @@ public class SecurityConfiguration {
             .anyRequest()
             .authenticated()
             .and()
+            .cors()
+            .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
