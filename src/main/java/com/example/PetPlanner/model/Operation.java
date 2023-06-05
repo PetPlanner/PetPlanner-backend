@@ -24,11 +24,7 @@ public class Operation {
     @Column(nullable = false)
     String describeOp;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_pet_id")
-    Pet pet;
+    Long petId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_user_id")
-    User user;
+    Long vetId;
 }

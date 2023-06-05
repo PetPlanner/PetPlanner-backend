@@ -22,7 +22,5 @@ public class VetStation {
     @JoinColumn(name="fk_address_id")
     Address address;
 
-    @OneToOne
-    @JoinColumn(name= "fk_user_id")
-    User user;
+    Long hostId;
 }

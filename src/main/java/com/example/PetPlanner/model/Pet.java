@@ -33,7 +33,5 @@ public class Pet {
     @JoinColumn(name = "fk_pet_id", referencedColumnName = "id")
     private List<Vaccine> vaccines;
 
-    @OneToOne
-    @JoinColumn(name = "fk_user_id")
-    private User user;
+    private Long userId;
 }

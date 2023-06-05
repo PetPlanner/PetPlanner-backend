@@ -22,11 +22,9 @@ public class Comment {
     @Column(nullable = false)
     String comment;
 
-    @OneToOne
-    @JoinColumn(name = "fk_user_id")
-    User user;
+    @Column(nullable = false)
+    Long userId;
 
-    @OneToOne
-    @JoinColumn(name = "fk_hotel_id")
-    Hotel hotel;
+    @Column(nullable = false)
+    Long hotelId;
 }

@@ -28,9 +28,7 @@ public class Hotel {
     @JoinColumn(name = "fk_address_id")
     private Address address;
 
-    @OneToOne
-    @JoinColumn(name = "fk_user_id")
-    private User user;
+    private Long hostId;
 
     @OneToMany
     @JoinColumn(name = "fk_hotel_id", referencedColumnName = "id")
