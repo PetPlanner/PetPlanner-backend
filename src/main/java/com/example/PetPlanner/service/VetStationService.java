@@ -1,5 +1,6 @@
 package com.example.PetPlanner.service;
 
+import com.example.PetPlanner.dto.VetStationSearchDto;
 import com.example.PetPlanner.model.Pet;
 import com.example.PetPlanner.model.VetStation;
 import com.example.PetPlanner.repository.VetStationRepository;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +29,9 @@ public class VetStationService {
 
     public List<VetStation> findByHostId(Long id) {
         return vetStationRepository.findByHostId(id);
+    }
+
+    public List<VetStation> search(VetStationSearchDto searchDto) {
+        return vetStationRepository.searchByNameAndCity(searchDto.getName().toLowerCase(),searchDto.getCity().toLowerCase(),searchDto.getCountry().toLowerCase(),searchDto.getStreet().toLowerCase());
     }
 }

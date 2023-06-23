@@ -12,8 +12,9 @@ import java.util.List;
 public class PetService {
     private final PetRepository petRepository;
 
-    public Pet create(Pet pet) {
-        return petRepository.save(pet);
+    public List<Pet> create(Pet pet) {
+        petRepository.save(pet);
+        return findByUserId(pet.getUserId());
     }
 
     public Pet findById(Long id) {
