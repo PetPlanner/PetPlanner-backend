@@ -34,5 +34,7 @@ public class Hotel {
     @JoinColumn(name = "fk_hotel_id", referencedColumnName = "id")
     private List<Pet> pets;
 
+    private float avgGrade;
+
 
 }

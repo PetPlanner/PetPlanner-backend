@@ -29,4 +29,6 @@ public class VetStation {
     String webSiteUrl;
 
     Long hostId;
+
+    private float avgGrade = 0;
 }

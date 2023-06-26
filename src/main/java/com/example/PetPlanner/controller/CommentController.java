@@ -1,6 +1,7 @@
 package com.example.PetPlanner.controller;
 
 import com.example.PetPlanner.model.Comment;
+import com.example.PetPlanner.model.ObjectType;
 import com.example.PetPlanner.model.Pet;
 import com.example.PetPlanner.service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -24,14 +25,14 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.OK).body(commentService.findById(id));
     }
 
-    @GetMapping("/user/{id}")
-    public ResponseEntity findByUserId(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(commentService.findByUserId(id));
+    @GetMapping("/user/{id}/status/{status}")
+    public ResponseEntity findByUserId(@PathVariable Long id, @PathVariable ObjectType status) {
+        return ResponseEntity.status(HttpStatus.OK).body(commentService.findByUserId(id,status));
     }
 
     @GetMapping("/hotel/{id}")
     public ResponseEntity findByHotelId(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(commentService.findByHotelId(id));
+        return ResponseEntity.status(HttpStatus.OK).body(commentService.findByObjectId(id));
     }
 
     @DeleteMapping("id")

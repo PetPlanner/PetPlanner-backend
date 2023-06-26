@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -26,5 +28,10 @@ public class Comment {
     Long userId;
 
     @Column(nullable = false)
-    Long hotelId;
+    Long objectId;
+
+    @Column(nullable = false)
+    ObjectType objectType;
+
+    LocalDateTime dateTime;
 }
