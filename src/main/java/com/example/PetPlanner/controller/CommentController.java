@@ -30,9 +30,9 @@ public class CommentController {
         return ResponseEntity.status(HttpStatus.OK).body(commentService.findByUserId(id,status));
     }
 
-    @GetMapping("/hotel/{id}")
-    public ResponseEntity findByHotelId(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(commentService.findByObjectId(id));
+    @GetMapping("/object/{id}/status/{status}")
+    public ResponseEntity findByHotelId(@PathVariable Long id, @PathVariable ObjectType status) {
+        return ResponseEntity.status(HttpStatus.OK).body(commentService.findByObjectId(id,status));
     }
 
     @DeleteMapping("id")

@@ -13,7 +13,7 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<Comment,Long> {
 
     List<Comment> findByUserIdAndObjectType(Long id, ObjectType objectType);
-    List<Comment> findByObjectId(Long id);
+    List<Comment> findByObjectIdAndObjectType(Long id, ObjectType objectType);
     @Query("select avg(grade) from Comment c where  c.objectId = :id")
     float findAvgGradeForObjectId(@Param("id") Long id);
 }
