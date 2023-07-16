@@ -25,4 +25,8 @@ public class UserService {
         findById(id);
         userRepository.deleteById(id);
     }
+
+    public List<User> findWalkerByCity(String city) {
+        return userRepository.findWalkerByCity(city);
+    }
 }

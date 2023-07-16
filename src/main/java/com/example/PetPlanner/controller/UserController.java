@@ -28,4 +28,10 @@ public class UserController {
     public ResponseEntity findById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(userService.findById(id));
     }
+
+
+    @GetMapping("/city/{city}")
+    public ResponseEntity findWalkerByCity(@PathVariable String city){
+        return ResponseEntity.status(HttpStatus.OK).body(userService.findWalkerByCity(city));
+    }
 }
