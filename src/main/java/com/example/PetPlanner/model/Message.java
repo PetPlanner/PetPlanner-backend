@@ -18,6 +18,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String message;
+    private String subject;
     private Long senderId;
     private Long receiverId;
     private LocalDateTime dateTime;

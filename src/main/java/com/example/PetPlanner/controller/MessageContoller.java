@@ -1,5 +1,6 @@
 package com.example.PetPlanner.controller;
 
+import com.example.PetPlanner.dto.MessageDto;
 import com.example.PetPlanner.model.Message;
 import com.example.PetPlanner.service.MessageService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class MessageContoller {
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody Message message){
+    public ResponseEntity create(@RequestBody MessageDto message){
         return ResponseEntity.status(HttpStatus.OK).body(messageService.create(message));
     }
 
