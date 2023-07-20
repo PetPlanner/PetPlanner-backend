@@ -1,5 +1,6 @@
 package com.example.PetPlanner.controller;
 
+import com.example.PetPlanner.model.Role;
 import com.example.PetPlanner.model.User;
 import com.example.PetPlanner.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -34,4 +35,10 @@ public class UserController {
     public ResponseEntity findWalkerByCity(@PathVariable String city){
         return ResponseEntity.status(HttpStatus.OK).body(userService.findWalkerByCity(city));
     }
+
+    @GetMapping("/role/{role}")
+    public ResponseEntity findByRole(@PathVariable Role role){
+        return  ResponseEntity.status(HttpStatus.OK).body(userService.findByRole(role));
+    }
+
 }

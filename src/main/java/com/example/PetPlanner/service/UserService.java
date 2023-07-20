@@ -1,6 +1,7 @@
 package com.example.PetPlanner.service;
 
 import com.example.PetPlanner.exception.UserNotFound;
+import com.example.PetPlanner.model.Role;
 import com.example.PetPlanner.model.User;
 import com.example.PetPlanner.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,9 @@ public class UserService {
 
     public List<User> findWalkerByCity(String city) {
         return userRepository.findWalkerByCity(city);
+    }
+
+    public List<User> findByRole(Role role) {
+        return userRepository.findByRole(role);
     }
 }
