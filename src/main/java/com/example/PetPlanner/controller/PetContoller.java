@@ -1,5 +1,6 @@
 package com.example.PetPlanner.controller;
 
+import com.example.PetPlanner.dto.VaccineDto;
 import com.example.PetPlanner.model.Hotel;
 import com.example.PetPlanner.model.Pet;
 import com.example.PetPlanner.repository.PetRepository;
@@ -33,5 +34,10 @@ public class PetContoller {
     @GetMapping("/user/{id}")
     public ResponseEntity findByUserId(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(petService.findByUserId(id));
+    }
+
+    @PostMapping("/vaccine")
+    public ResponseEntity addVaccine(@RequestBody VaccineDto dto){
+        return ResponseEntity.status(HttpStatus.OK).body((petService.addVaccine(dto)));
     }
 }

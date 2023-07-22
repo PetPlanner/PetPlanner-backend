@@ -30,6 +30,4 @@ public class Vaccine {
 
     @Column(nullable = false)
     private LocalDate expirationDate;
-
-
 }
