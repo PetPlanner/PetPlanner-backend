@@ -23,9 +23,10 @@ public class ReminderService{
 
     private final MessageRepository messageRepository;
 
-    public Reminder create(Reminder reminder){
+    public List<Reminder> create(Reminder reminder){
         reminder.setActivate(true);
-        return reminderRepository.save(reminder);
+        reminderRepository.save(reminder);
+        return findByUserId(reminder.getUserId());
     }
 
     public List<Reminder> findAll(){
@@ -68,14 +69,21 @@ public class ReminderService{
     public Reminder findById(Long id){
         return reminderRepository.findById(id).get();
     }
-    public Reminder changeStatus(Long id) {
+    public List<Reminder> changeStatus(Long id) {
         Reminder r = findById(id);
         r.setActivate(!r.isActivate());
-        return reminderRepository.save(r);
+        reminderRepository.save(r);
+        return findByUserId(r.getUserId());
     }
 
     public List<Reminder> deleteById(Long id) {
+        long userId = findById(id).getUserId();
         reminderRepository.deleteById(id);
-        return findAll();
+        return findByUserId(userId);
+    }
+
+    public List<Reminder> findByUserId(Long id) {
+        return reminderRepository.findByUserId(id);
+
     }
 }

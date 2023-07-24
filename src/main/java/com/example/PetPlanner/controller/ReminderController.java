@@ -36,4 +36,9 @@ public class ReminderController {
     public ResponseEntity deleteById(@PathVariable Long id){
         return ResponseEntity.status(HttpStatus.OK).body(reminderService.deleteById(id));
     }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity findByUserId(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(reminderService.findByUserId(id));
+    }
 }

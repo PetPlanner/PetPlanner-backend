@@ -15,4 +15,6 @@ public interface ReminderRepository extends JpaRepository<Reminder, Long> {
 
     @Query("select r from Reminder r where r.dailyHour != 0 and r.isActivate = true")
     List<Reminder> findAllWithDailyHour();
+
+    List<Reminder> findByUserId(Long id);
 }
