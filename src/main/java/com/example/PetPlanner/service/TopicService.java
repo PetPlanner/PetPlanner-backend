@@ -1,12 +1,15 @@
 package com.example.PetPlanner.service;
 
+import com.example.PetPlanner.dto.TopicDto;
 import com.example.PetPlanner.model.Topic;
 import com.example.PetPlanner.model.TopicStatus;
+import com.example.PetPlanner.repository.AnswerOnTopicRepository;
 import com.example.PetPlanner.repository.TopicRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,6 +17,8 @@ import java.util.List;
 public class TopicService {
 
     private final TopicRepository topicRepository;
+
+    private final AnswerOnTopicRepository answerOnTopicRepository;
 
     public Topic create(Topic topic){
         topic.setStatus(TopicStatus.PENDING);
@@ -41,5 +46,25 @@ public class TopicService {
         t.setStatus(status);
         topicRepository.save(t);
         return findAllByStatus(TopicStatus.PENDING);
+    }
+
+    public List<TopicDto> findAllAccepted(){
+        List<Topic> topics = findAllByStatus(TopicStatus.ACCEPTED);
+        List<TopicDto> retVal = new ArrayList<>();
+
+        for(Topic t : topics){
+            retVal.add(TopicDto.builder()
+                            .title(t.getTitle())
+                            .dateTime(t.getDateTime())
+                            .numberOfPreview(t.getNumberOfPreview())
+                            .topicId(t.getId())
+                            .numOfAnswers(countAnswer(t.getId()))
+                    .build());
+        }
+        return retVal;
+    }
+
+    private int countAnswer(Long topicId){
+        return answerOnTopicRepository.countAnswer(topicId);
     }
 }

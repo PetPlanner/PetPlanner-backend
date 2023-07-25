@@ -42,4 +42,9 @@ public class TopicController {
         return ResponseEntity.status(HttpStatus.OK).body(topicService.changeStatus(id,status));
     }
 
+    @GetMapping("/accepted")
+    public ResponseEntity findAllAccepted(){
+        return ResponseEntity.status(HttpStatus.OK).body(topicService.findAllAccepted());
+    }
+
 }
